@@ -1,0 +1,39 @@
+{
+  "name": "roombites-backend",
+  "version": "1.0.0",
+  "description": "RoomBites campus food delivery backend API",
+  "main": "server.js",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "seed": "node seed/seedAll.js",
+    "seed:admin": "node seed/seedAdmin.js",
+    "seed:categories": "node seed/seedCategories.js",
+    "seed:foods": "node seed/seedFoodItems.js",
+    "indexes:users": "node scripts/resetUserIndexes.js",
+    "remove:demo-users": "node scripts/removeDemoUsers.js",
+    "clear-users": "node scripts/deleteAllUsers.js",
+    "fix-delivery-users": "node scripts/fixDeliveryUsers.js",
+    "clear-orders": "node scripts/clearOrders.js",
+    "cleanup-pending": "node scripts/cleanupPendingRegistrations.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cloudinary": "^2.5.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^8.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
