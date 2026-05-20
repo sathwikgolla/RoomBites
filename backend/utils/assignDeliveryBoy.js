@@ -20,7 +20,7 @@ async function findGroupedDeliveryBoy(orderDetails) {
     department: orderDetails.department,
   })
     .sort({ createdAt: 1 })
-    .populate("assignedDeliveryBoyId", "fullName email availabilityStatus accountStatus emailVerified isCancelled role");
+    .populate("assignedDeliveryBoyId", "fullName email availabilityStatus accountStatus isCancelled role");
 
   const grouped = activeOrders.find((order) => {
     const deliveryBoy = order.assignedDeliveryBoyId;
@@ -29,7 +29,6 @@ async function findGroupedDeliveryBoy(orderDetails) {
       deliveryBoy.role === "delivery" &&
       (deliveryBoy.availabilityStatus || "available") === "available" &&
       deliveryBoy.accountStatus === "active" &&
-      deliveryBoy.emailVerified === true &&
       deliveryBoy.isCancelled !== true &&
       roomDistance(order.roomNumber, orderDetails.roomNumber) <= 3
     );
@@ -50,13 +49,12 @@ export async function assignDeliveryBoy(orderDetails = null) {
     role: "delivery",
     $or: [{ availabilityStatus: "available" }, { availabilityStatus: { $exists: false } }, { availabilityStatus: null }],
     accountStatus: "active",
-    emailVerified: true,
     isCancelled: { $ne: true },
   }).sort({ deliveryId: 1, createdAt: 1 });
 
   console.log("Delivery boys found:", deliveryBoys.length);
   deliveryBoys.forEach((boy) => {
-    console.log(boy.email, boy.role, boy.availabilityStatus, boy.accountStatus, boy.emailVerified);
+    console.log(boy.email, boy.role, boy.availabilityStatus, boy.accountStatus);
   });
 
   if (!deliveryBoys.length) {

@@ -11,7 +11,6 @@ const result = await User.updateMany(
     $set: {
       availabilityStatus: "available",
       accountStatus: "active",
-      emailVerified: true,
       isCancelled: false,
     },
   }

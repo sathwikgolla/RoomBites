@@ -18,8 +18,7 @@
     "remove:demo-users": "node scripts/removeDemoUsers.js",
     "clear-users": "node scripts/deleteAllUsers.js",
     "fix-delivery-users": "node scripts/fixDeliveryUsers.js",
-    "clear-orders": "node scripts/clearOrders.js",
-    "cleanup-pending": "node scripts/cleanupPendingRegistrations.js"
+    "clear-orders": "node scripts/clearOrders.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -30,8 +29,7 @@
     "express-validator": "^7.2.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.5",
-    "multer": "^1.4.5-lts.1",
-    "nodemailer": "^8.0.7"
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"

@@ -155,7 +155,7 @@ export function AppProvider({ children }) {
 
   const register = async (payload) => {
     const result = await auth.register(payload);
-    if (result.ok) showToast(result.requiresVerification ? "Registration started. Verify OTPs to activate." : "Account created successfully");
+    if (result.ok) showToast("Account created successfully");
     return result;
   };
 
@@ -412,8 +412,6 @@ export function AppProvider({ children }) {
       refreshUser: auth.refreshUser,
       updateProfile,
       cancelAccount,
-      sendEmailOtp: auth.sendEmailOtp,
-      verifyEmailOtp: auth.verifyEmailOtp,
       fetchCategories,
       fetchFoodsByCategory,
       fetchStudentOrders,

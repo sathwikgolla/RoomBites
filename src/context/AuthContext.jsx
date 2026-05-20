@@ -79,7 +79,7 @@ export function AuthProvider({ children }) {
       try {
         const { name, confirmPassword, ...rest } = payload;
         const data = await authApi.register({ ...rest, fullName: payload.fullName || name });
-        if (!data.token || !data.user) return { ok: true, requiresVerification: true, data, message: data.message || "Registration started. Please verify your account." };
+        if (!data.token || !data.user) return { ok: true, requiresLogin: true, data, message: data.message || "Registration successful. Please login." };
         const user = saveSession(data.token, data.user);
         return { ok: true, user };
       } catch (error) {
@@ -112,16 +112,6 @@ export function AuthProvider({ children }) {
     }
   }, [logout]);
 
-  const sendEmailOtp = useCallback(async (email) => authApi.sendEmailOtp({ email }), []);
-  const verifyEmailOtp = useCallback(
-    async (email, otp) => {
-      const data = await authApi.verifyEmailOtp({ email, otp });
-      if (data.token && data.user) saveSession(data.token, data.user);
-      return data;
-    },
-    [saveSession]
-  );
-
   const value = useMemo(
     () => ({
       currentUser,
@@ -134,10 +124,8 @@ export function AuthProvider({ children }) {
       refreshUser,
       updateProfile,
       cancelAccount,
-      sendEmailOtp,
-      verifyEmailOtp,
     }),
-    [cancelAccount, currentUser, loading, login, logout, refreshUser, register, sendEmailOtp, token, updateProfile, verifyEmailOtp]
+    [cancelAccount, currentUser, loading, login, logout, refreshUser, register, token, updateProfile]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

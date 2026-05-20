@@ -10,11 +10,10 @@ const userSchema = new mongoose.Schema(
     phone: { type: String, unique: true, sparse: true, trim: true },
     walletBalance: { type: Number, default: 100000, min: 0 },
     isCancelled: { type: Boolean, default: false },
-    emailVerified: { type: Boolean, default: false },
     accountStatus: {
       type: String,
-      enum: ["pending_verification", "active", "cancelled"],
-      default: "pending_verification",
+      enum: ["active", "cancelled"],
+      default: "active",
     },
     studentId: { type: String, unique: true, sparse: true, trim: true },
     department: { type: String, trim: true },

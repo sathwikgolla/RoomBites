@@ -17,9 +17,9 @@ export async function protect(req, res, next) {
       res.status(401);
       throw new Error("Not authorized, account unavailable");
     }
-    if (!user.emailVerified || user.accountStatus !== "active") {
+    if (user.accountStatus !== "active") {
       res.status(403);
-      throw new Error("Account verification pending");
+      throw new Error("Account unavailable");
     }
 
     req.user = user;

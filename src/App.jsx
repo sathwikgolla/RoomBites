@@ -7,7 +7,6 @@ import CategoryItems from "./pages/CategoryItems.jsx";
 import Home from "./pages/Home.jsx";
 import Menu from "./pages/Menu.jsx";
 import Register from "./pages/Register.jsx";
-import VerifyAccount from "./pages/VerifyAccount.jsx";
 import {
   About,
   AdminDashboard,
@@ -33,7 +32,6 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/verify-account" element={<VerifyAccount />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/notifications" element={<Notifications />} />
               <Route path="/profile" element={<Profile />} />

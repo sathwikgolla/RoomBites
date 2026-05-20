@@ -1,9 +1,5 @@
-import bcrypt from "bcrypt";
-import PendingRegistration from "../models/PendingRegistration.js";
 import User from "../models/User.js";
-import { generateOtp, otpExpiry } from "../utils/generateOtp.js";
 import { generateToken } from "../utils/generateToken.js";
-import { sendEmailOtp } from "../utils/sendEmailOtp.js";
 
 const AUTHORIZED_ADMIN_EMAIL = "sathwikgolla06@gmail.com";
 const clean = (value) => (typeof value === "string" ? value.trim() : value);
@@ -74,12 +70,6 @@ const sanitizeUser = (user) => {
   return obj;
 };
 
-async function createPendingEmailOtp(email) {
-  const otp = generateOtp();
-  await sendEmailOtp(email, otp);
-  return otp;
-}
-
 export async function register(req, res, next) {
   try {
     const body = {
@@ -95,15 +85,10 @@ export async function register(req, res, next) {
     };
     validateRoleFields(body);
     await assertUniqueAgainstUsers(body);
-    await PendingRegistration.deleteOne({ email: body.email });
-
-    const passwordHash = await bcrypt.hash(body.password, 12);
-    const emailOtp = await createPendingEmailOtp(body.email);
-
-    await PendingRegistration.create({
+    const user = await User.create({
       fullName: body.fullName,
       email: body.email,
-      passwordHash,
+      password: body.password,
       role: body.role,
       phone: ["student", "delivery"].includes(body.role) ? body.phone : undefined,
       studentId: body.role === "student" ? body.studentId : undefined,
@@ -111,15 +96,16 @@ export async function register(req, res, next) {
       year: body.role === "student" ? body.year : undefined,
       deliveryId: body.role === "delivery" ? body.deliveryId : undefined,
       adminId: body.role === "admin" ? body.adminId : undefined,
-      emailOtp,
-      emailOtpExpires: otpExpiry(),
+      availabilityStatus: body.role === "delivery" ? "available" : undefined,
+      accountStatus: "active",
+      isCancelled: false,
+      walletBalance: 100000,
     });
 
     res.status(201).json({
       success: true,
-      message: "OTP sent to email. Please verify to complete registration.",
-      email: body.email,
-      role: body.role,
+      message: "Registration successful",
+      user: sanitizeUser(user),
     });
   } catch (error) {
     next(error);
@@ -154,13 +140,9 @@ export async function login(req, res, next) {
       res.status(403);
       throw new Error("This account has been cancelled");
     }
-    if (!user.emailVerified) {
-      res.status(403);
-      throw new Error("Please verify your email before login");
-    }
     if (user.accountStatus !== "active") {
       res.status(403);
-      throw new Error("Account verification pending");
+      throw new Error("Account unavailable");
     }
     if (req.body.role && user.role !== req.body.role) {
       res.status(403);
@@ -168,70 +150,6 @@ export async function login(req, res, next) {
       throw new Error(`Invalid ${label} account`);
     }
     res.json({ success: true, token: generateToken(user._id), user: sanitizeUser(user) });
-  } catch (error) {
-    next(error);
-  }
-}
-
-export async function sendEmailOtpRoute(req, res, next) {
-  try {
-    const email = clean(req.body.email)?.toLowerCase();
-    const pending = await PendingRegistration.findOne({ email });
-    if (!pending) {
-      res.status(404);
-      throw new Error("Registration expired. Please register again.");
-    }
-    const emailOtp = await createPendingEmailOtp(email);
-    pending.emailOtp = emailOtp;
-    pending.emailOtpExpires = otpExpiry();
-    pending.createdAt = new Date();
-    await pending.save();
-    res.json({ success: true, message: "Email OTP sent" });
-  } catch (error) {
-    next(error);
-  }
-}
-
-export async function verifyEmailOtp(req, res, next) {
-  try {
-    const email = clean(req.body.email)?.toLowerCase();
-    const otp = clean(req.body.otp);
-    const pending = await PendingRegistration.findOne({ email });
-    if (!pending) {
-      res.status(404);
-      throw new Error("Registration expired. Please register again.");
-    }
-    const valid = pending.emailOtp === otp && pending.emailOtpExpires && pending.emailOtpExpires > new Date();
-    if (!valid) {
-      res.status(400);
-      throw new Error("Invalid or expired email OTP");
-    }
-    const body = pending.toObject();
-    await assertUniqueAgainstUsers(body);
-    const user = await User.create({
-      fullName: body.fullName,
-      email: body.email,
-      password: body.passwordHash,
-      role: body.role,
-      phone: body.phone,
-      studentId: body.studentId,
-      department: body.department,
-      year: body.year,
-      deliveryId: body.deliveryId,
-      adminId: body.adminId,
-      emailVerified: true,
-      accountStatus: "active",
-      availabilityStatus: body.role === "delivery" ? "available" : undefined,
-      isCancelled: false,
-      walletBalance: 100000,
-    });
-    await PendingRegistration.deleteOne({ email });
-    res.json({
-      success: true,
-      message: "Email verified. Account created successfully.",
-      token: generateToken(user._id),
-      user: sanitizeUser(user),
-    });
   } catch (error) {
     next(error);
   }

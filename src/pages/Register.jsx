@@ -133,20 +133,8 @@ export default function Register() {
     }
 
     if (result.requiresLogin) {
-      showToast("Account created. Please login.");
+      showToast("Account created successfully");
       navigate("/login");
-      return;
-    }
-    if (result.requiresVerification) {
-      navigate("/verify-account", {
-        replace: true,
-        state: {
-          email: payload.email,
-          phone: payload.phone || "",
-          role,
-          emailMessage: result.data?.emailMessage,
-        },
-      });
       return;
     }
 
