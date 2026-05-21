@@ -1,87 +1,110 @@
-# 🍔 ROOMBITES – CAMPUS FOOD DELIVERY WEB APP
+<div align="center">
 
-RoomBites is a modern full-stack campus food delivery platform that allows students to order food directly to their classroom, floor, hostel, or campus location. The platform provides separate dashboards for students, delivery agents, and admins with real-time order management and smart delivery assignment.
+# 🍔 ROOMBITES  
+### Smart Campus Food Delivery Platform 🚀
 
----
+<p align="center">
+  <img src="https://img.shields.io/badge/Frontend-React-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Backend-Node.js-green?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Database-MongoDB-brightgreen?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/UI-TailwindCSS-38BDF8?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Auth-JWT-orange?style=for-the-badge" />
+</p>
 
-# 📌 Problem Statement
+### 🌐 Live Website  
+# 👉 https://room-bites.vercel.app/
 
-In many colleges, students face problems such as:
+### 💻 GitHub Repository  
+# 👉 https://github.com/sathwikgolla/RoomBites
 
-- Long canteen queues
-- Walking long distances in summer
-- Limited break time between classes
-- Difficulty carrying food to upper floors/classrooms
-
-RoomBites solves these problems by enabling fast campus food delivery inside the college premises.
-
----
-
-# 🚀 Features
-
-## 👨‍🎓 Student Features
-
-- Secure Email OTP Authentication
-- Role-Based Registration & Login
-- Browse Food Categories
-- View Food Items with Images
-- Add to Cart
-- Floating Checkout Panel
-- Demo Wallet Payment System
-- Select Floor & Room Number
-- Delivery Speed Selection
-- Live Order Tracking
-- Notifications System
-- Order History
-- Responsive UI
+</div>
 
 ---
 
-## 🛵 Delivery Agent Features
+# 📌 About RoomBites
 
-- Delivery Agent Authentication
-- Available / Busy Toggle
-- View Assigned Orders Only
-- Accept Orders
-- Mark Out for Delivery
-- Near Classroom Status
-- Delivery Success Confirmation
-- Completed Orders History
-- Real-Time Order Updates
+RoomBites is a modern full-stack campus food delivery platform designed for college students to order food directly to their classrooms, hostel rooms, or campus locations.
+
+The platform provides:
+
+- 👨‍🎓 Student Dashboard
+- 🛵 Delivery Agent Dashboard
+- 🛠️ Admin Dashboard
+- 📦 Real-Time Order Tracking
+- ⚡ Smart Delivery Assignment
+- 📱 Fully Responsive UI
+- 🎨 Premium Brown-Themed SaaS Design
 
 ---
 
-## 🛠️ Admin Features
+# 🚀 Live Demo
 
-- Admin Dashboard
-- View All Users
-- Monitor Orders
-- Track Delivery Agents
-- Analytics Overview
-- Revenue Tracking
-- Pending Order Monitoring
-- Delivery Assignment Monitoring
+| Platform | URL |
+|---|---|
+| 🌐 Frontend | https://room-bites.vercel.app/ |
+| 💻 GitHub | https://github.com/sathwikgolla/RoomBites |
+| 👨‍💻 Portfolio | https://sathwikgolla-portfolio.vercel.app/ |
+
+---
+
+# ✨ Features
+
+# 👨‍🎓 Student Features
+
+✅ Secure Authentication  
+✅ Browse Food Categories  
+✅ View Food Images & Details  
+✅ Add to Cart  
+✅ Floating Checkout Panel  
+✅ Demo Wallet Payment  
+✅ Room/Floor Selection  
+✅ Live Order Tracking  
+✅ Notifications  
+✅ Order History  
+✅ Responsive UI  
+
+---
+
+# 🛵 Delivery Agent Features
+
+✅ Delivery Login  
+✅ Available / Busy Toggle  
+✅ Assigned Orders Only  
+✅ Accept Orders  
+✅ Mark Out for Delivery  
+✅ Near Classroom Status  
+✅ Delivery Success Confirmation  
+✅ Completed Orders History  
+
+---
+
+# 🛠️ Admin Features
+
+✅ Admin Dashboard  
+✅ User Management  
+✅ Order Monitoring  
+✅ Delivery Tracking  
+✅ Revenue Analytics  
+✅ Pending Order Queue Monitoring  
 
 ---
 
 # 🧠 Smart Features
 
-- Smart Delivery Assignment
-- Pending Order Queue System
-- Auto Assignment When Delivery Agent Becomes Available
-- Email OTP Verification
-- JWT Authentication
-- Protected Routes
-- Role-Based Authorization
-- MongoDB Persistent Storage
-- Responsive Brown Premium UI
-- Advanced Animations with Framer Motion
+✨ Smart Delivery Assignment  
+✨ Auto Queue System  
+✨ JWT Authentication  
+✨ Protected Routes  
+✨ Role-Based Authorization  
+✨ MongoDB Persistent Storage  
+✨ Framer Motion Animations  
+✨ Responsive Premium UI  
 
 ---
 
 # 🏗️ Tech Stack
 
-## Frontend
+## 🎨 Frontend
 
 - React.js
 - Vite
@@ -90,7 +113,9 @@ RoomBites solves these problems by enabling fast campus food delivery inside the
 - React Router DOM
 - Framer Motion
 
-## Backend
+---
+
+## ⚙️ Backend
 
 - Node.js
 - Express.js
@@ -99,18 +124,22 @@ RoomBites solves these problems by enabling fast campus food delivery inside the
 - JWT Authentication
 - Nodemailer
 
-## Deployment
+---
 
-- Frontend → Vercel
-- Backend → Render
-- Database → MongoDB Atlas
+## ☁️ Deployment
+
+| Service | Platform |
+|---|---|
+| Frontend | Vercel |
+| Backend | Render |
+| Database | MongoDB Atlas |
 
 ---
 
 # 📂 Project Structure
 
 ```bash
-roombites/
+RoomBites/
 │
 ├── frontend/
 │   ├── public/
@@ -139,7 +168,6 @@ roombites/
 │   ├── package.json
 │   └── server.js
 │
-├── DEPLOYMENT.md
 └── README.md
 ```
 
@@ -147,87 +175,76 @@ roombites/
 
 # 🔐 Authentication Flow
 
-## Registration Flow
+## 📝 Registration Flow
 
-1. User enters registration details
-2. Email OTP is sent using Nodemailer
-3. User verifies OTP
-4. Account is created in MongoDB
-5. User can now login
-
----
-
-## Login Flow
-
-1. User selects role:
-   - Student
-   - Delivery Agent
-   - Admin
-
-2. User enters:
-   - Email
-   - Password
-
-3. Backend validates:
-   - Email
-   - Password
-   - Role
-   - Email Verification
-
-4. JWT Token generated after successful login
+1️⃣ User enters registration details  
+2️⃣ Email OTP verification  
+3️⃣ Account creation  
+4️⃣ User login enabled  
 
 ---
 
-# 📦 Order Flow
+## 🔑 Login Flow
 
-## Student Side
+User selects role:
 
-1. Browse food categories
-2. Add items to cart
-3. Open checkout panel
-4. Enter:
-   - Floor
-   - Room Number
-   - Department
-   - Phone Number
+- 👨‍🎓 Student
+- 🛵 Delivery Agent
+- 🛠️ Admin
 
-5. Select delivery speed
-6. Place order
-7. Track order live
+Backend validates:
+
+- Email
+- Password
+- Role
+- Verification
+
+JWT token generated after successful login.
 
 ---
 
-## Delivery Agent Side
+# 📦 Order Workflow
 
-1. Set status as Available
-2. Receive assigned order
-3. Accept order
-4. Mark Out for Delivery
-5. Mark Near Classroom
-6. Complete delivery
-7. Order moves to completed history
+# 👨‍🎓 Student Side
+
+- Browse foods
+- Add items to cart
+- Open checkout panel
+- Select:
+  - Floor
+  - Room Number
+  - Department
+  - Delivery Speed
+- Place order
+- Track delivery live
+
+---
+
+# 🛵 Delivery Side
+
+- Set Available
+- Accept order
+- Mark Out for Delivery
+- Mark Near Classroom
+- Complete delivery
 
 ---
 
 # ⚙️ Backend Setup
 
-## Step 1 — Navigate to Backend
+## 1️⃣ Navigate to Backend
 
 ```bash
 cd backend
 ```
 
----
-
-## Step 2 — Install Dependencies
+## 2️⃣ Install Dependencies
 
 ```bash
 npm install
 ```
 
----
-
-## Step 3 — Create `.env`
+## 3️⃣ Create `.env`
 
 ```env
 PORT=5001
@@ -245,9 +262,7 @@ EMAIL_PASS=your_gmail_app_password
 NODE_ENV=development
 ```
 
----
-
-## Step 4 — Start Backend
+## 4️⃣ Start Backend
 
 ```bash
 npm run dev
@@ -257,31 +272,25 @@ npm run dev
 
 # 💻 Frontend Setup
 
-## Step 1 — Navigate to Frontend
+## 1️⃣ Navigate to Frontend
 
 ```bash
 cd frontend
 ```
 
----
-
-## Step 2 — Install Dependencies
+## 2️⃣ Install Dependencies
 
 ```bash
 npm install
 ```
 
----
-
-## Step 3 — Create `.env`
+## 3️⃣ Create `.env`
 
 ```env
 VITE_API_URL=http://localhost:5001/api
 ```
 
----
-
-## Step 4 — Start Frontend
+## 4️⃣ Start Frontend
 
 ```bash
 npm run dev
@@ -289,21 +298,17 @@ npm run dev
 
 ---
 
-# 🧪 Build Commands
+# 🚀 Production Build
 
-## Frontend Production Build
+## Frontend Build
 
 ```bash
-cd frontend
 npm run build
 ```
 
----
-
-## Backend Production Start
+## Backend Start
 
 ```bash
-cd backend
 npm start
 ```
 
@@ -311,21 +316,19 @@ npm start
 
 # 🌐 Deployment
 
-# 🟢 MongoDB Atlas Setup
+# 🟢 MongoDB Atlas
 
-1. Create MongoDB Atlas account
-2. Create cluster
-3. Create database user
-4. Whitelist IP:
-   ```txt
-   0.0.0.0/0
-   ```
-5. Copy connection string
-6. Add to backend `.env`
+- Create cluster
+- Create DB user
+- Whitelist IP:
+```txt
+0.0.0.0/0
+```
+- Add Mongo URI to `.env`
 
 ---
 
-# 🟣 Backend Deployment (Render)
+# 🟣 Render Backend
 
 ## Build Command
 
@@ -339,27 +342,9 @@ npm install
 npm start
 ```
 
-## Environment Variables
-
-```env
-PORT=5001
-
-MONGO_URI=your_mongodb_atlas_uri
-
-JWT_SECRET=your_secret_key
-JWT_EXPIRES_IN=7d
-
-CLIENT_URL=https://your-frontend.vercel.app
-
-EMAIL_USER=yourgmail@gmail.com
-EMAIL_PASS=your_gmail_app_password
-
-NODE_ENV=production
-```
-
 ---
 
-# ⚫ Frontend Deployment (Vercel)
+# ⚫ Vercel Frontend
 
 ## Environment Variable
 
@@ -371,22 +356,16 @@ VITE_API_URL=https://your-backend.onrender.com/api
 
 # 🔒 Security Features
 
-- Password Hashing with bcrypt
-- JWT Protected Routes
-- Role-Based Authorization
-- Email OTP Verification
-- Unique Email Validation
-- Unique Phone Validation
-- Protected Admin Access
-- Secure Environment Variables
+🔐 bcrypt Password Hashing  
+🔐 JWT Protected Routes  
+🔐 Role-Based Authorization  
+🔐 Email OTP Verification  
+🔐 Unique Email Validation  
+🔐 Secure Environment Variables  
 
 ---
 
 # 📸 Screenshots
-
-Add screenshots inside a `screenshots` folder.
-
-Example:
 
 ```md
 ![Home Page](./screenshots/home.png)
@@ -400,70 +379,50 @@ Example:
 
 ---
 
-# ✅ Final Testing Checklist
-
-## Authentication
-
-- Register user
-- Receive email OTP
-- Verify OTP
-- Login successfully
-
----
-
-## Student Flow
-
-- Browse foods
-- Add to cart
-- Place order
-- Track delivery
-- View order history
-
----
-
-## Delivery Flow
-
-- Set Available
-- Accept assigned order
-- Update statuses
-- Complete delivery
-- View completed orders
-
----
-
-## Admin Flow
-
-- View users
-- View orders
-- Monitor delivery agents
-- Check analytics
-
----
-
 # 📈 Future Enhancements
 
-- UPI Payment Gateway
-- Socket.io Real-Time Tracking
-- Ratings & Reviews
-- Group Ordering
-- AI-Based Delivery Optimization
-- QR-Based Delivery Confirmation
-- Push Notifications
+🚀 Real-Time Socket.io Tracking  
+🚀 UPI Payment Gateway  
+🚀 AI-Based Delivery Optimization  
+🚀 Push Notifications  
+🚀 QR-Based Delivery Confirmation  
+🚀 Ratings & Reviews  
 
 ---
 
-# 👨‍💻 Author
+# 👨‍💻 Developer
+
+<div align="center">
 
 ## Sathwik Golla
 
-B.Tech CSE Student  
-Full Stack Developer  
-Passionate about building real-world scalable campus solutions.
+### 🌐 Portfolio
+https://sathwikgolla-portfolio.vercel.app/
 
-GitHub: `sathwikgolla`
+### 💻 GitHub
+https://github.com/sathwikgolla
+
+### 🚀 Live Website
+https://room-bites.vercel.app/
+
+</div>
 
 ---
 
-# 📄 License
+# ⭐ Support
 
-This project is built for educational, portfolio, and campus innovation purposes.
+If you like this project:
+
+⭐ Star the Repository  
+🍴 Fork the Project  
+🚀 Contribute Improvements  
+
+---
+
+<div align="center">
+
+# 🚀 ROOMBITES — Smart Campus Food Delivery Platform
+
+### Built with ❤️ by Sathwik Golla
+
+</div>
